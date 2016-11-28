@@ -51,7 +51,7 @@ def branch_and_bound(N, all_edges):
 SALT = input('Enter salt: ').strip()
 
 def secret(string):
-    return hashlib.sha1(SALT + string).hexdigest()
+    return hashlib.sha1((SALT + string).encode('utf-8')).hexdigest()
 
 def gen_edges(people, groups):
     disallowed = set()
