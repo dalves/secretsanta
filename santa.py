@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
 import hashlib
-import sys
 import random
-from operator import itemgetter
-from collections import namedtuple
-from heapq import heappush, heappop
 from itertools import chain, combinations, product
-import time
 
 TEMPLATE = """
 <html>
@@ -90,11 +85,11 @@ if __name__ == '__main__':
     assignments = branch_and_bound(len(people), edges)
 
     for giver, receiver in assignments:
-        print(giver, '-->', receiver)
-        # hashed_giver = secret(giver)
-        # with open(hashed_giver + '.html', 'w') as outfile:
-        #     outfile.write(TEMPLATE.format(giver, receiver))
-        #     outfile.close()
-        # print(giver + "'s assignment can be found at: " +
-        #         "http://www.davidalves.net/santa/" + hashed_giver + ".html")
+        #print(giver, '-->', receiver)
+        hashed_giver = secret(giver)
+        with open(hashed_giver + '.html', 'w') as outfile:
+            outfile.write(TEMPLATE.format(giver, receiver))
+            outfile.close()
+        print(giver + "'s assignment can be found at: " +
+                "http://www.davidalves.net/santa/" + hashed_giver + ".html")
 
